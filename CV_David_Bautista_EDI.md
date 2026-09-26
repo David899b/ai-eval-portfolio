@@ -109,7 +109,7 @@ I build the evaluation infrastructure that lets teams **ship LLM features with m
 | **Compliance-ready AI (Ley 25.326, GDPR, EU AI Act)** | PII-minimized pipelines, DPA/SCC management, audit trails, self-hosted options |
 | **Evaluation that scales** | Harness in CI/CD, regression suites, drift alerts (PSI/KL), shadow/canary |
 | **Golden sets that don't rot** | Versioned, kappa-calibrated, adversarial, refresh cadence, data cards |
-| **Async, zero-meeting delivery** | Repos + dashboards + runbooks; sync only for kickoff/readout |
+| **Async-first, minimal sync** | Repos + dashboards + runbooks; sync only for kickoff/readout |
 
 ---
 

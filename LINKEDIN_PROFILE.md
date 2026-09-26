@@ -19,7 +19,7 @@ Para equipos que necesitan evaluación *ya*: golden sets curados (kappa≥0.8, S
 
 **Stack:** Python, Agents (LangGraph), vLLM/Ollama, FastAPI, Streamlit, Instructor/Pydantic, MLflow, Evidently, pytest, GitHub Actions, Kubernetes, Cookiecutter.
 
-**Filosofía:** "Nadie valida lo que produce." EDI entrega modelo + evidencia + test congelado; dominio valida contra ground truth. Cero reuniones por diseño: entregas via PR + dashboard + runbook. Sync = 0–1/mes. GMT-3.
+**Filosofía:** "Nadie valida lo que produce." EDI entrega modelo + evidencia + test congelado; dominio valida contra ground truth. Async-first, minimal sync: entregas via PR + dashboard + runbook. Async-first, sync only when needed. GMT-3.
 
 **Tracks:**
 - **Track A (Fractional EDI):** $12k/mo (20h/sem) — Yo hago la evaluación

@@ -14,7 +14,7 @@ Diseño **plataformas de auto-evaluación** (`auto-eval-platform`) donde **agent
 
 También trabajo como **Fractional EDI (Model Evaluation Engineer)** para equipos que necesitan evaluación *ya*: golden sets curados (kappa ≥ 0.8), harness en CI/CD, gates 3-escenarios, drift monitoring, compliance. Async-first, 20–30h/sem.
 
-**Cero reuniones por diseño.** Entregas via PR + dashboard + runbook. Sync = 0–1/mes. GMT-3.
+**Async-first, minimal sync.** Entregas via PR + dashboard + runbook. Async-first, sync only when needed. GMT-3.
 
 ---
 
@@ -115,7 +115,7 @@ También trabajo como **Fractional EDI (Model Evaluation Engineer)** para equipo
 | **Compliance-ready AI** | DPA review + PII audit + data cards | Compliance Agent: DPAs → test suites ejecutables |
 | **Evaluation that scales** | Harness en CI/CD + drift alerts | Agents corren solos: nightly red-team, hourly drift |
 | **Golden sets that don't rot** | Kappa ≥ 0.8, versionados, refresh manual | Golden Set Agent: auto-refresh on drift + kappa tracking |
-| **Zero-meeting delivery** | 1 video async/semana | 0–1 sync/mes (solo arquitectura) |
+| **Zero-meeting delivery** | Weekly async video update | Async-first, sync only when needed (solo arquitectura) |
 
 ---
 

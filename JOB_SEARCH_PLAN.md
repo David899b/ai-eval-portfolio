@@ -75,7 +75,7 @@
 - [ ] **Profile title**: "Model Evaluation Engineer — Golden Sets, CI/CD Gates, LLM Red-Teaming, Compliance"
 - [ ] **Hourly rate**: $200/h (start), adjust after 3–5 jobs
 - [ ] **Profile sections**:
-  - Overview: 3-sentence hook + 3 bullet proof points + "Async-first, zero-meeting delivery"
+  - Overview: 3-sentence hook + 3 bullet proof points + "Async-first, async-first, minimal sync delivery"
   - Portfolio: 3 items (ai-eval-harness, MultiOCR disclaimers, AySA MVP)
   - Skills: `LLM Evaluation`, `Golden Set`, `Prompt Engineering`, `MLOps`, `pytest`, `MLflow`, `Evidently`, `vLLM`, `Compliance`, `Red Teaming`
   - Employment history: Concentrix/labIA (current), T-Mobile Dinoboots, Relo Metrics, ActiveFence

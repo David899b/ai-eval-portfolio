@@ -11,7 +11,7 @@
 
 I'm a **Model Evaluation Engineer (EDI / AI Quality Engineer)**. I build the evaluation infrastructure that lets teams **go/no-go with evidence**: frozen test sets, bootstrap confidence intervals, 3-scenario reporting, CI/CD gates, drift monitoring, and compliance.
 
-**What I deliver (async-first, zero-meeting):**
+**What I deliver (async-first, minimal sync):**
 - **Golden sets that don't rot** — versioned, SHA-256 frozen, kappa ≥ 0.8, adversarial, refresh cadence
 - **Harnesses that run in CI/CD** — pytest + Instructor (schema enforcement) + judge/coherence 2nd-pass + bootstrap CI
 - **Gates that map to business risk** — 3-scenario (pessimistic/base/optimistic) reporting, regression suites, shadow/canary
@@ -25,7 +25,7 @@ I'm a **Model Evaluation Engineer (EDI / AI Quality Engineer)**. I build the eva
 
 **Stack:** Python, Instructor/Pydantic, vLLM/Ollama, MLflow, Evidently, pytest, GitHub Actions, Docker, PSI/KL drift, MLflow.
 
-**Work style:** 100% remote, async-first (GMT-3, overlap US/EU mornings). Deliver repos + dashboards + runbooks. Sync only for kickoff/readout.
+**Work style:** 100% remote, async-first (GMT-3, overlap US/EU mornings). Deliver repos + dashboards + runbooks. Async-first, sync only when needed.
 
 **Engagement types:** Fractional retainer (20–30h/week), project-based harness build, eval audit, red-team audit, compliance package.
 

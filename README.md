@@ -5,7 +5,7 @@
 ![Deps](https://img.shields.io/badge/dependencies-0-success)
 ![Tests](https://img.shields.io/badge/tests-207-success)
 
-# auto-eval-platform
+# ai-eval-portfolio
 
 **Self-serve evaluation infrastructure for LLM teams. Agents do the work. You ship.**
 
@@ -117,7 +117,7 @@ human-readable summaries go to stderr so `| jq` works.
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│  auto-eval-platform                        stdlib only        │
+│  ai-eval-portfolio                        stdlib only        │
 ├───────────────────────────────────────────────────────────────┤
 │  CLI (argparse)              │  API (http.server)            │
 │  golden-set / drift          │  POST /golden-set             │
@@ -223,4 +223,4 @@ MIT — Use it, extend it, learn from it.
 
 ---
 
-**Ready to stop hand-crafting eval?** → `cookiecutter gh:David899b/auto-eval-portfolio`
+**Ready to stop hand-crafting eval?** → clone the repo and run `python3 scripts/run_tests.py`. The harness is the starting point; no install step, no account, no key.

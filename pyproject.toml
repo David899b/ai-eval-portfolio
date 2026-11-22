@@ -28,28 +28,11 @@ dev = [
     "ruff>=0.5",
     "mypy>=1.10",
 ]
-# The FastAPI service, the Streamlit dashboard and the cookiecutter template are
-# reference implementations and are NOT exercised by CI.
-service = [
-    "fastapi>=0.110",
-    "uvicorn>=0.29",
-    "pydantic>=2.7",
-    "typer>=0.12",
-]
-dashboard = [
-    "streamlit>=1.35",
-    "plotly>=5.20",
-    "pandas>=2.2",
-]
-scaffold = [
-    "cookiecutter>=2.3",
-]
-# Optional LLM providers, only needed to point an agent at a real model.
-providers = [
-    "openai>=1.30",
-    "anthropic>=0.25",
-    "ollama>=0.3",
-]
+# Everything under src/ and projects/ is stdlib-only, so there are no runtime
+# extras. An earlier version listed service/, dashboard/ and scaffold/ extras
+# (FastAPI, Streamlit, cookiecutter) and a providers/ extra (openai, anthropic,
+# ollama): no module imported any of them. A dependency list nothing imports is
+# a claim, not a dependency.
 
 [project.scripts]
 auto-eval = "auto_eval.cli:main"

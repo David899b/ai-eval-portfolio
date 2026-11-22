@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Evaluación de agentes de voz — Proaco y GAIL</title><style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+background:#0f172a;color:#e2e8f0;margin:0;padding:2.5rem 2rem;line-height:1.55;font-size:15px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:1.8rem;margin:0 0 .3rem;color:#f8fafc;letter-spacing:-.02em}
+.sub{color:#94a3b8;margin:0 0 2rem;font-size:.95rem}
+h2{font-size:1.15rem;margin:2.4rem 0 .8rem;color:#f1f5f9;border-bottom:1px solid #1e293b;padding-bottom:.4rem}
+h3{font-size:.92rem;margin:0 0 .7rem;color:#cbd5e1;font-weight:600}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:1.2rem}
+.card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:1rem 1.1rem}
+.card.wide{grid-column:1/-1}
+.stat{font-size:2rem;font-weight:700;color:#f8fafc;line-height:1.1}
+.stat small{font-size:.78rem;font-weight:500;color:#94a3b8;display:block;margin-top:.2rem}
+.badge{display:inline-block;margin-top:.5rem;font-size:.68rem;padding:.15rem .5rem;border-radius:99px;
+background:#0f172a;color:#94a3b8;border:1px solid #334155}
+table{width:100%;border-collapse:collapse;font-size:.85rem;font-variant-numeric:tabular-nums}
+th{text-align:right;padding:.45rem .55rem;border-bottom:2px solid #334155;color:#94a3b8;
+font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em}
+th.lbl{text-align:left}
+td{padding:.42rem .55rem;border-bottom:1px solid #1e293b;text-align:right}
+td.lbl{text-align:left;color:#e2e8f0;font-weight:600}
+td.lbl .n{display:block;font-size:.68rem;color:#64748b;font-weight:400}
+.ok{color:#4ade80}
+.mid{color:#fbbf24}
+.bad{color:#f87171;font-weight:600}
+.na{color:#475569}
+.vacio{color:#64748b;font-size:.85rem}
+.barbg{background:#0f172a;border-radius:99px;height:8px;overflow:hidden;min-width:60px}
+.bar{height:100%;border-radius:99px}
+.callout{background:#1e293b;border:1px solid #334155;border-left:3px solid #38bdf8;
+border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0}
+.callout h3{color:#38bdf8;margin:0 0 .4rem;font-size:.88rem}
+.callout p{margin:.3rem 0;font-size:.9rem;color:#cbd5e1}
+.callout b{color:#f8fafc}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid #1e293b;color:#64748b;font-size:.8rem}
+@media print{body{background:#fff;color:#111} .card{background:#f8fafc;border-color:#cbd5e1}
+.stat{color:#111} td,th{border-color:#e2e8f0} .callout{background:#f8fafc;border-color:#94a3b8}
+.callout h3{color:#0369a1} .callout p{color:#334155} .callout b{color:#000} td.lbl{color:#111}
+th{color:#475569} footer{color:#64748b}}
+</style></head><body><div class="wrap">
+<h1>Evaluación de agentes de voz</h1>
+<p class="sub">Proaco y GAIL · resultados de producción · heurística + LLM judge con comparación multi-juez</p>
+<div class="grid"></div>
+
+<div class="callout">
+<h3>Cómo leer estos números</h3>
+<p>Las <b>heurísticas</b> son reglas determinísticas sobre la transcripción: baratas, reproducibles, sin variabilidad. Se usan para <b>compliance duro</b>.</p>
+<p>Los <b>jueces LLM</b> capturan lo que la regex no ve (tono, coherencia) pero <b>no son deterministas</b>. Por eso se corren varios sobre la misma llamada: para medir cuánta variabilidad hay antes de confiar en un score.</p>
+<p>Cuando heurística y juez discrepan mucho, <b>el juez no está catching el problema</b> — no que el bot esté mejor.</p>
+</div>
+
+<h2>GAIL — 0 llamadas outbound</h2>
+<div class="card"><h3>Mismo pipeline, cuatro fuentes de score</h3><p class="vacio">sin datos</p></div>
+
+<h2>Proaco — 0 inbound · 0 outbound</h2>
+<div class="grid">
+<div class="card"><h3>Inbound</h3><p class="vacio">sin datos</p></div>
+<div class="card"><h3>Outbound</h3><p class="vacio">sin datos</p></div>
+</div>
+<h2>Hallazgos</h2>
+<div class="callout"><h3>1 · El consentimiento es el problema crítico</h3>
+<p>GAAIL pide consentimiento en <b>0%</b> de las llamadas. Proaco outbound: <b>0.000</b> — nunca lo pide. Es el hallazgo más grave y es el mismo en ambos clientes.</p></div>
+
+<div class="callout"><h3>2 · Inbound y outbound son productos distintos</h3>
+<p>Proaco inbound saluda en <b>0.000</b> y se despide en <b>0.000</b>: empieza mal, termina bien.</p>
+<p>Outbound se presenta perfecto (<b>0.000</b>) pero no menciona el propósito (<b>0.000</b>). <b>Evaluar solo inbound da una conclusión que no aplica a outbound.</b></p></div>
+
+<div class="callout"><h3>3 · La variabilidad del juez es del tamaño del efecto medido</h3>
+<p>Mismo input, dos jueces, diferencias de hasta <b>0.000</b>.
+Por eso las reglas duras se anclan en heurística, y por eso un juez solo no alcanza para levantar un gate.</p></div>
+
+<h2>Cómo se puede reproducir</h2>
+<div class="card wide">
+<p style="margin:.2rem 0"><b>GAIL</b> — <code>gail-evaluacion/evaluacion/</code>: <code>deepeval_resultados.json</code>, <code>langsmith_resultados.json</code> · heurísticas en <code>gail_masivo/evaluacion/resultados_masivos.json</code></p>
+<p style="margin:.5rem 0"><b>Proaco</b> — <code>proaco-evaluacion/evaluaciones/resultados_completos.json</code>: 6 suites (heurística, LLM judges, 7 reglas × 2 jueces, por flow)</p>
+<p style="margin:.5rem 0">Los jueces ausentes no se rellenan con ceros: si una fuente no se corrió, no aparece.</p>
+</div>
+
+<footer>Generado desde los JSON de resultados. Scores = value con justificación por métrica. Sin datos de clientes.</footer>
+</div></body></html>
